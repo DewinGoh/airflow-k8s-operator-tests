@@ -1,5 +1,5 @@
 dags:
   git:
-    url: 
+    url: https://github.com/DewinGoh/airflow-k8s-operator-tests.git
   enabled:
     initContainer: true
