@@ -14,13 +14,13 @@ default_args = {
 }
 
 
-dag = DAG('cloudfront-sg-update.update_sg_dag', default_args=default_args, schedule_interval='*/1 * * * *')
+dag = DAG('cloudfront-sg-update.update_sg_dag', default_args=default_args, schedule_interval='* * * * *')
 job_name = 'cloudfront-sg-update.update-sg'
 
 the_task = KubernetesPodOperator(namespace="airflow",
                           image="Python:3.6",
-                          cmds=["python"],
-                          arguments=["./scripts/sample_code.py"],
+                          cmds=["python","-c"],
+                          arguments=["print('Hello World!')"],
                           name="dag-test",
                           task_id="dag-test-task-id",
                           get_logs=True,
