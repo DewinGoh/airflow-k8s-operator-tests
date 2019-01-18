@@ -1,5 +1,10 @@
+airflow:
+  image:
+    repository: 617160209765.dkr.ecr.ap-southeast-1.amazonaws.com/basic-airflow-k8s-img
+    tag: latest
+
 dags:
   git:
     url: https://github.com/DewinGoh/airflow-k8s-operator-tests.git
-  enabled:
-    initContainer: true
+  initContainer: 
+    enabled: true
