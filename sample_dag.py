@@ -2,6 +2,9 @@ from datetime import datetime, timedelta
 
 from airflow import DAG
 from kubernetes import config
+
+config.load_incluster_config()
+
 from airflow.contrib.operators.kubernetes_pod_operator import KubernetesPodOperator
 import logging
 
@@ -19,7 +22,6 @@ default_args = {
 dag = DAG('cloudfront-sg-update.update_sg_dag', default_args=default_args, schedule_interval='* * * * *')
 job_name = 'cloudfront-sg-update.update-sg'
 
-config.load_incluster_config()
 
 the_task = KubernetesPodOperator(namespace="airflow",
                           image="Python:3.6",
