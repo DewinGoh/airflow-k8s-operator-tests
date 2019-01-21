@@ -3,8 +3,6 @@ from datetime import datetime, timedelta
 from airflow import DAG
 from kubernetes import config
 
-config.load_incluster_config()
-
 from airflow.contrib.operators.kubernetes_pod_operator import KubernetesPodOperator
 import logging
 
@@ -27,6 +25,7 @@ the_task = KubernetesPodOperator(namespace="airflow",
                           image="Python:3.6",
                           cmds=["python","-c"],
                           arguments=["print('Hello World!')"],
+                          in_cluster=True,
                           name="dag-test",
                           task_id="dag-test-task-id",
                           get_logs=True,
