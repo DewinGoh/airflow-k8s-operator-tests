@@ -29,7 +29,7 @@ the_task = KubernetesPodOperator(namespace="airflow",
                           name="dag-test",
                           task_id="dag-test-task-id",
                           get_logs=True,
-                          annotations="iam.amazonaws.com/role: api_access_role",
+                          annotations={"iam.amazonaws.com/role": "api_access_role"},
                           dag=dag
                           )
 
