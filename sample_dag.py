@@ -21,8 +21,8 @@ dag = DAG('cloudfront-sg-update.update_sg_dag', default_args=default_args, sched
 job_name = 'cloudfront-sg-update.update-sg'
 
 
-the_task = KubernetesPodOperator(namespace="airflow",
-                          image="Python:3.6",
+the_task = KubernetesPodOperator(namespace="airflow-test",
+                          image="python:3.6.3",
                           cmds=["python","-c"],
                           arguments=["print('Hello World!')"],
                           in_cluster=True,
@@ -30,6 +30,6 @@ the_task = KubernetesPodOperator(namespace="airflow",
                           task_id="dag-test-task-id",
                           get_logs=True,
                           annotations={"iam.amazonaws.com/role": "api_access_role"},
+                          is_delete_operator_pod=True,
                           dag=dag
                           )
-
