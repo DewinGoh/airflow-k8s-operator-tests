@@ -19,8 +19,9 @@ def print_stuff():
 	print("HELLO AGAIN")
 
 dag = DAG(
-    dag_id='example_python_operator', default_args=default_args,
+    dag_id='a_python_operator', default_args=default_args,
     schedule_interval=None)
+job_name = 'a_python_operator'
 
 task = PythonOperator(
     task_id='print_stuff',
