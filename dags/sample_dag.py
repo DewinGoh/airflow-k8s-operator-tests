@@ -24,7 +24,7 @@ job_name = 'cloudfront-sg-update.update-sg'
 the_task = KubernetesPodOperator(namespace="airflow-test",
                                 image="python:3.6-alpine",
                                 cmds=["python","-c"],
-                                arguments=["print('Hello World!')"],
+                                arguments=["import time; time.sleep(10); print('AHA YOU DID IT')"],
                                 in_cluster=True,
                                 name="dag-test",
                                 task_id="dag-test-task-id",
