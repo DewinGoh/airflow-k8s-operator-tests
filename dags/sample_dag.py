@@ -22,7 +22,7 @@ job_name = 'cloudfront-sg-update.update-sg'
 
 
 the_task = KubernetesPodOperator(namespace="airflow-test",
-                                image="python:3.6.3",
+                                image="python:3.6-alpine",
                                 cmds=["python","-c"],
                                 arguments=["print('Hello World!')"],
                                 in_cluster=True,
