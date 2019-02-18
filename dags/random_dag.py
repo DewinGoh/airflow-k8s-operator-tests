@@ -15,8 +15,9 @@ default_args = {
 
 def print_stuff():
 	print("HELLO WORLD!!")
-	time.sleep(5)
-	print("HELLO AGAIN")
+	for i in range(100):
+		time.sleep(5)
+		print("HELLO AGAIN")
 
 dag = DAG(
     dag_id='a_python_operator', default_args=default_args,
