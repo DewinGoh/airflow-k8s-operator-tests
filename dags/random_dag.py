@@ -1,6 +1,6 @@
 
 import time
-from airflow.operators import PythonOperator
+from airflow.operators.python_operator import PythonOperator
 from datetime import datetime, timedelta
 from airflow import DAG
 
@@ -28,5 +28,10 @@ task = PythonOperator(
     task_id='print_stuff',
     provide_context=True,
     python_callable=print_stuff,
-    dag=dag)
+    dag=dag,
+    executor_config={
+        "KubernetesExecutor": {
+            "annotations": {"iam.amazonaws.com/role": "prod_kubernetes_logs_role"}
+        }
+    })
 
