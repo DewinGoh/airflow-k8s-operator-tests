@@ -13,7 +13,7 @@ default_args = {
     'max_active_runs': 1
 }
 
-def print_stuff(*args):
+def print_stuff(*args,**kwargs):
 	print("HELLO WORLD!!")
 	for i in range(100):
 		time.sleep(5)
